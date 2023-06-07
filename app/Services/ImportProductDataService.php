@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Product;
-use Illuminate\Log\Logger;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +13,6 @@ class ImportProductDataService
     CONST MAX_IMPORT_PER_FILE = 100;
     private Collection $importedFiles;
     private int $importCount;
-    private \Psr\Log\LoggerInterface $logChannel;
     
     public function __construct()
     {
@@ -58,7 +56,6 @@ class ImportProductDataService
             Log::channel('imports')->error(
                 "Ocorreu um erro ao importar o produto de código: {$product->code}.\n Erro: {$e->getMessage()}\n Trace: {$e->getTraceAsString()}"
             );
-            // TODO CRIAR EXCEPTION CUSTOMIZADA LOGANDO O ERRO, MOSTRANDO NO CONSOLE E SALVAR NO HISTÓRICO O ERRO...
         }
     }
 }
