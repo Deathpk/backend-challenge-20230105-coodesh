@@ -10,11 +10,10 @@ use Illuminate\Support\Collection;
 
 class ProductsService
 {
-    CONST ITEMS_PER_PAGE = 15;
 
-    public function listAllProducts(): AnonymousResourceCollection
+    public function listAllProducts(int $perPage): AnonymousResourceCollection
     {
-        return ProductResource::collection(Product::paginate(self::ITEMS_PER_PAGE));
+        return ProductResource::collection(Product::paginate($perPage));
     }
 
     public function showSpecificProduct(string $code): ProductResource 

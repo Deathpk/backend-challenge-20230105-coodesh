@@ -16,8 +16,8 @@ class ProductsController extends Controller
 
     public function index(): AnonymousResourceCollection
     {
-        // Adicionar parametro perPage.
-        return $this->service->listAllProducts();
+        $perPage = (int) request()->query('perPage', 15);
+        return $this->service->listAllProducts($perPage);
     }
     
     public function show(string $code)
