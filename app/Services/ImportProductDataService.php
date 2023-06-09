@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Models\Product;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\Finder\SplFileInfo;
@@ -26,6 +28,8 @@ class ImportProductDataService
             Log::channel('imports')->info("Checando se há novos produtos para importação no arquivo {$file->getFilenameWithoutExtension()}.\n");
             $this->resolveImport($file);
         });
+        
+        Cache::put(env('IMPORT_CRON_LASTRUN_CACHE_KEY'), Carbon::now());
     }
 
     private function resolveImport(SplFileInfo &$file): void

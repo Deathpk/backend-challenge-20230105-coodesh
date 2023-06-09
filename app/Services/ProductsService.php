@@ -32,11 +32,11 @@ class ProductsService
         if(!$foundProduct) {
             throw new ProductNotFoundException($code);
         }
-        // TODO EXCEPTION CUSTOM.
+
         $foundProduct->updateFromCollection($attributes);
     }
 
-    public function deleteProduct(string $code)
+    public function deleteProduct(string $code): void
     {
         $foundProduct = Product::where('code', $code)->first();
         if(!$foundProduct) {

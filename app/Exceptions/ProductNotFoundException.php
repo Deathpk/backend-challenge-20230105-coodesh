@@ -2,21 +2,13 @@
 
 namespace App\Exceptions;
 
-use App\Exceptions\CustomException;
-
-class ProductNotFoundException extends \Exception implements CustomException
+class ProductNotFoundException extends AbstractException
 {
-    private int $statusCode = 404;
-
     public function __construct(string $productCode)
     {
         parent::__construct(
-            "Não conseguimos encontrar um produto de código {$productCode} na nossa base de dados. Por favor, confira o código inserido e tente novamente."
+            responseMessage: "Não conseguimos encontrar um produto de código {$productCode} na nossa base de dados. Por favor, confira o código inserido e tente novamente.",
+            statusCode: 404
         );
-    }
-
-    public function getStatusCode(): int
-    {
-        return $this->statusCode;
     }
 }
