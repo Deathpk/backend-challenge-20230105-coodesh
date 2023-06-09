@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('code');
             $table->enum('status', Status::getAvailableStatus());
             $table->date('imported_t');
+            $table->date('updated_t');
             $table->string('url');
             $table->string('creator');
             $table->timestamp('created_t');
