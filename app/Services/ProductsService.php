@@ -42,7 +42,7 @@ class ProductsService
         if(!$foundProduct) {
             throw new ProductNotFoundException($code);
         }
-
+        
         $foundProduct->inactivate();
     }
 }

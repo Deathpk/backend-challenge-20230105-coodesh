@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class AbstractException extends \Exception implements CustomException
@@ -45,7 +46,7 @@ class AbstractException extends \Exception implements CustomException
 
     private function getReportMessageForUserEntity(): string 
     {
-        $userId = 1; //Auth::user()->id;
+        $userId = Auth::user()->id;
         return "{$this->logMessage}, o erro ocorreu com o usuário de ID : {$userId}";
     }
 

@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', function() {
+Route::middleware('auth:sanctum')->get('/', function() {
     $connection = new mysqli(
         env('DB_HOST'), 
         env('DB_USERNAME'), 
@@ -35,7 +35,8 @@ Route::get('/', function() {
     ]);
 });
 
-Route::controller(ProductsController::class)->prefix('products')
+Route::middleware('auth:sanctum')->controller(ProductsController::class)
+->prefix('products')
 ->group(function() {
     Route::get('/', 'index');
     Route::get('/{code}', 'show');

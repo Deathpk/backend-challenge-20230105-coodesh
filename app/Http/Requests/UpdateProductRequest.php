@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Enums\Product\Status;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class UpdateProductRequest extends FormRequest
@@ -14,7 +15,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -41,11 +42,6 @@ class UpdateProductRequest extends FormRequest
             'stores' => [ 'required', 'string'],
         ];
     }
-
-    // public function messages()
-    // {
-        
-    // }
 
     public function getAttributes(): Collection
     {
