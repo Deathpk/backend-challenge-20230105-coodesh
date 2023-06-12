@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
+use App\Models\ExternalClient;
 use Illuminate\Console\Command;
 
 class GenerateNewApiToken extends Command
@@ -26,8 +26,8 @@ class GenerateNewApiToken extends Command
      */
     public function handle(): void
     {
-        $user = User::first();
-        $token = $user->createToken($this->argument('alias'))->plainTextToken;
+        $externalClient = ExternalClient::first();
+        $token = $externalClient->createToken($this->argument('alias'))->plainTextToken;
         echo "Token criado com sucesso!";
         echo"Token: {$token}";
     }
