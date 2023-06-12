@@ -7,6 +7,9 @@ O projeto tem como objetivo dar suporte a equipe de nutricionistas da empresa Fi
 * Laravel 10
 * MySQL
 
+## Link para apresentação
+https://www.loom.com/embed/ead901eff0924888a75682db337f3d89
+
 ## Instruções
 Para esse projeto é necessário o PHP 8.1 e o MySQL versão 5.8 > e o gerenciador de dependências composer instalados na máquina.
 
